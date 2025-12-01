@@ -1,18 +1,13 @@
 version: 1.0
 jobs:
   test-job:
-    artifacts:
-      upload:
-        - type: file
-          name: output.zip
-          location: stratus://pipeline-test-bucket/client
-          file: output.zip
     steps:
+      - 'curl -L -o output.zip "https://pipeline-test-bucket-development.zohostratus.in/client/output.zip"'
+      - unzip -q output.zip -d .
+      - rm -rf output.zip
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
-      - zip -rq output.zip node_modules package-lock.json
-      - ls
 stages:
   - name: build
     jobs:
