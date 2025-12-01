@@ -1,0 +1,11 @@
+version: 1.0
+jobs:
+  test-job:
+    steps:
+      - 'echo "Start: $(date)"'
+      - npm i
+      - 'echo "End: $(date)"'
+stages:
+  - name: build
+    jobs:
+      - test-job
