@@ -7,7 +7,7 @@ jobs:
           name: cache-test.zip
           location: stratus://pipeline-test-bucket/client
           regex:
-            - 'node-modules/**'
+            - 'node_modules/**'
     steps:
       - 'echo "Start: $(date)"'
       - npm i
