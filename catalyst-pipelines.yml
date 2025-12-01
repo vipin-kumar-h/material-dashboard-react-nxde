@@ -13,6 +13,7 @@ jobs:
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
+      - ulimit -n 65536
 stages:
   - name: build
     jobs:
