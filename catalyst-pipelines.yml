@@ -1,19 +1,20 @@
 version: 1.0
 jobs:
   test-job:
-    artifacts:
-      upload:
-        - type: zip
-          name: cache-test.zip
-          location: stratus://pipeline-test-bucket/client
-          regex:
-            - '/catalyst/node_modules/**'
-            - '/catalyst/package-lock.json'
+    # artifacts:
+    #   upload:
+    #     - type: zip
+    #       name: cache-test.zip
+    #       location: stratus://pipeline-test-bucket/client
+    #       regex:
+    #         - '/catalyst/node_modules/**'
+    #         - '/catalyst/package-lock.json'
     steps:
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
-      - ulimit -n 65536
+      - zip -r output.zip node_modules package-lock.json
+      - ls
 stages:
   - name: build
     jobs:
