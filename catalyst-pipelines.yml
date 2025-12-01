@@ -2,9 +2,7 @@ version: 1.0
 jobs:
   test-job:
     steps:
-      - 'curl -L -o output.zip "https://pipeline-test-bucket-development.zohostratus.in/client/output.zip"'
-      - unzip -q output.zip -d .
-      - rm -rf output.zip
+      - node --version
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
