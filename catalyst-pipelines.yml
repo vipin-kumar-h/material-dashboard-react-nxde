@@ -13,7 +13,7 @@ jobs:
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
-      - zip -r output.zip node_modules package-lock.json
+      - zip -rq output.zip node_modules package-lock.json
       - ls
 stages:
   - name: build
