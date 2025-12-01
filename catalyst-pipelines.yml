@@ -1,6 +1,13 @@
 version: 1.0
 jobs:
   test-job:
+    artifacts:
+      upload:
+        - type: zip
+          name: cache-test.zip
+          location: stratus://pipeline-test-bucket/client
+          regex:
+            - 'node-modules/**'
     steps:
       - 'echo "Start: $(date)"'
       - npm i
