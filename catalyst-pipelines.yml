@@ -1,12 +1,26 @@
-version: 1.0
+version: 1
 jobs:
   test-job:
+    image: myImage
+    artifacts:
+      upload:
+        - type: file
+          name: output.zip
+          location: stratus://pipeline-test-bucket/client
+          file: output.zip
     steps:
-      - node --version
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
+      - zip -rq output.zip node_modules package-lock.json
+      - ls
 stages:
   - name: build
     jobs:
       - test-job
+images:
+  myImage:
+    image: node:20.9.0-alpine
+    auth:
+      username: vipinkumarh
+      password: << env.DOCKER_PASS >>
