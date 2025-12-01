@@ -9,6 +9,7 @@ jobs:
           location: stratus://pipeline-test-bucket/client
           file: output.zip
     steps:
+      - apk add --no-cache zip
       - 'echo "Start: $(date)"'
       - npm i
       - 'echo "End: $(date)"'
